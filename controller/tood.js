@@ -42,11 +42,14 @@ const changestste = async(req,res)=>{
     console.log(id)
   
     const finde =await todo.findOne(id)
+    finde.status=false
+    finde.save()
   
-    console.log("finde", finde);
+    // console.log("finde", finde);
 
-    const changing =todo.status = false 
-    console.log("changing",changing);
+    // const changing =finde.status = false 
+    // todo.push(changing)
+    // console.log("changing",changing);
     
     
     res.send('sucsses')
