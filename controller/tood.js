@@ -27,15 +27,13 @@ const deletetodo = async(req,res)=>{
     console.log("parems ",req.body)
     const {id} = req.body
     console.log("id",id)
-    const findedtodo =await todo.find() 
-    const finddeliting =findedtodo.filter((item)=>item._id.toString()!==id)         
-    console.log("finddeliting",finddeliting)
-    res.send('sucsses')
+    const findedtodo =await todo.deleteOne({_id:id}) 
+    console.log("findedtodo",findedtodo);
+    res.send("deleted")
    } catch (error) {
     console.log("delet error",error);
     
    }
-//    res.end("out")
 }
 const changestste = async(req,res)=>{
     const id = req.body 
@@ -43,14 +41,7 @@ const changestste = async(req,res)=>{
   
     const finde =await todo.findOne(id)
     finde.status=false
-    finde.save()
-  
-    // console.log("finde", finde);
-
-    // const changing =finde.status = false 
-    // todo.push(changing)
-    // console.log("changing",changing);
-    
+    finde.save()    
     
     res.send('sucsses')
 }
